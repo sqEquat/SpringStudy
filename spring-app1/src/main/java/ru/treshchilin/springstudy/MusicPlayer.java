@@ -2,12 +2,15 @@ package ru.treshchilin.springstudy;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MusicPlayer {
+	@Autowired
 	private List<Music> playlist;
 	private String name;
 	private int volumeLevel;
-	
-	public MusicPlayer() {}
 	
 	
 	public void setPlaylist(List<Music> playList) {
@@ -30,11 +33,12 @@ public class MusicPlayer {
 		this.volumeLevel = volumeLevel;
 	}
 
-	
-	public void doInit() {
-		System.out.println("Init of the " + name + " music player");
+
+	@Override
+	public String toString() {
+		return "MusicPlayer [playlist=" + playlist + ", name=" + name + ", volumeLevel=" + volumeLevel + "]";
 	}
-	
+
 	public void playMusic() {
 		for (Music music : playlist) {
 			System.out.println(music.getSong());

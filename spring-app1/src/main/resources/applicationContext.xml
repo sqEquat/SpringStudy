@@ -7,43 +7,6 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean 	id="musicBean1"
-        	class="ru.treshchilin.springstudy.RockMusic"
-        	init-method="doInit"
-        	destroy-method="doDestroy">
-    </bean>
-    
-    <bean 	id="musicBean2"
-        	class="ru.treshchilin.springstudy.ClassicalMusic"
-        	init-method="doMyInit"
-        	destroy-method="doMyDestroy">
-    </bean>
-    
-    <bean 	id="musicBean3"
-        	class="ru.treshchilin.springstudy.JazzMusic"
-        	init-method="doInit"
-        	destroy-method="doDestroy"
-        	factory-method="getJazzMusic">
-    </bean>
-    
-        
-    
-    <bean 	id="musicPlayer"
-    		class="ru.treshchilin.springstudy.MusicPlayer"
-    		scope="prototype"
-    		init-method="doInit">
-    		<property name="playlist">
-    			<list>
-    				<ref bean="musicBean1"/>
-    				<ref bean="musicBean2"/>
-    				<ref bean="musicBean3"/>
-    			</list>
-    		</property>
-    		
-    		<property name="name" value="${musicPlayer.name}"/>
-    		<property name="volumeLevel" value="${musicPlayer.volumeLevel}"/>
-    </bean>
+		<context:component-scan base-package="ru.treshchilin.springstudy"/>
 
 </beans>

@@ -1,13 +1,10 @@
 package ru.treshchilin.springstudy;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class JazzMusic implements Music {
 
-	private JazzMusic() {}
-	
-	public static JazzMusic getJazzMusic() {
-		return new JazzMusic();
-	}
-	
 	@Override
 	public String getSong() {
 		return "Fly me to the Moon";
