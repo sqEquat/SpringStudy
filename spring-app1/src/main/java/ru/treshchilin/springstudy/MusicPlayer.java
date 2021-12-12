@@ -1,20 +1,24 @@
 package ru.treshchilin.springstudy;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MusicPlayer {
-	@Autowired
-	private List<Music> playlist;
+	private ClassicalMusic classicalMusic;
+	private RockMusic rockMusic;
+	private JazzMusic jazzMusic;
 	private String name;
 	private int volumeLevel;
 	
-	
-	public void setPlaylist(List<Music> playList) {
-		this.playlist = playList;
+	@Autowired
+	public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, JazzMusic jazzMusic) {
+		this.classicalMusic = classicalMusic;
+		this.rockMusic = rockMusic;
+		this.jazzMusic = jazzMusic;
 	}
 	
 	public String getName() {
@@ -34,14 +38,23 @@ public class MusicPlayer {
 	}
 
 
-	@Override
-	public String toString() {
-		return "MusicPlayer [playlist=" + playlist + ", name=" + name + ", volumeLevel=" + volumeLevel + "]";
-	}
-
-	public void playMusic() {
-		for (Music music : playlist) {
-			System.out.println(music.getSong());
+	public void playMusic(Genres genre) {
+		Random random = new Random();
+		int randomSongIndex = random.nextInt(3);
+		
+		switch(genre) {
+		case CLASSICAL:
+			System.out.println(classicalMusic.getSongList().get(randomSongIndex));
+			break;
+		case JAZZ:
+			System.out.println(jazzMusic.getSongList().get(randomSongIndex));
+			break;
+		case ROCK:
+			System.out.println(rockMusic.getSongList().get(randomSongIndex));
+			break;
+		default:
+			System.out.println("There is no playlist in such genre");
+			break;
 		}
 	}
 }

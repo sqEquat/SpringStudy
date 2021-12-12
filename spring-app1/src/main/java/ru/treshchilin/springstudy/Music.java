@@ -1,5 +1,7 @@
 package ru.treshchilin.springstudy;
 
+import java.util.List;
+
 public interface Music {
-	String getSong();
+	List<String> getSongList();
 }

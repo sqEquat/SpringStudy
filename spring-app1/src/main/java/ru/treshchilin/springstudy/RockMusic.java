@@ -1,13 +1,16 @@
 package ru.treshchilin.springstudy;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class RockMusic implements Music {
 
 	@Override
-	public String getSong() {
-		return "Goret'";
+	public List<String> getSongList() {
+		return Arrays.asList("Goret'", "Unravel", "Enemy");
 	}
 	
 	public void doInit() {
