@@ -1,18 +1,21 @@
 package ru.treshchilin.springstudy;
 
-import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class MusicPlayer {
 	private ClassicalMusic classicalMusic;
 	private RockMusic rockMusic;
 	private JazzMusic jazzMusic;
-	private String name;
-	private int volumeLevel;
+	@Value("${musicPlayer.name}") String name;
+	@Value("${musicPlayer.volumeLevel}") int volumeLevel;
+	
 	
 	@Autowired
 	public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, JazzMusic jazzMusic) {
@@ -20,6 +23,7 @@ public class MusicPlayer {
 		this.rockMusic = rockMusic;
 		this.jazzMusic = jazzMusic;
 	}
+	
 	
 	public String getName() {
 		return name;
