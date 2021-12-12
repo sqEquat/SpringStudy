@@ -33,8 +33,7 @@
     <bean 	id="musicPlayer"
     		class="ru.treshchilin.springstudy.MusicPlayer"
     		scope="prototype"
-    		init-method="doInit"
-    		destroy-method="doDestroy">
+    		init-method="doInit">
     		<property name="playlist">
     			<list>
     				<ref bean="musicBean1"/>

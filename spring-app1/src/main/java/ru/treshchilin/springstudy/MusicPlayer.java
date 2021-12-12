@@ -35,9 +35,6 @@ public class MusicPlayer {
 		System.out.println("Init of the " + name + " music player");
 	}
 	
-	public void doDestroy() {
-		System.out.println("Destruction of the " + name + " music player");
-	}
 	public void playMusic() {
 		for (Music music : playlist) {
 			System.out.println(music.getSong());
