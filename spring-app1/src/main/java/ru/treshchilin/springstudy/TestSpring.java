@@ -15,6 +15,8 @@ public class TestSpring {
 		player1.playMusic(Genres.JAZZ);
 		player1.playMusic(Genres.ROCK);
 		
+		MusicPlayer player2 = context.getBean("musicPlayer", MusicPlayer.class);
+		System.out.println(player1 == player2);
 		
 		context.close();
 	}
